@@ -13,9 +13,12 @@ import os
 import dj_database_url
 from decouple import config
 import datetime
+import warnings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
 
 
 # Quick-start development settings - unsuitable for production
