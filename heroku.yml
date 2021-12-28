@@ -9,4 +9,4 @@ release:
   command:
     - python manage.py collectstatic --noinput
 run:
-  web: python manage.py runserver
+  web: gunicorn cineomatica_api.wsgi
