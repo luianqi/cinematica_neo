@@ -37,6 +37,7 @@ urlpatterns = [
     path('booking-list', BookingList.as_view(), name='booking-list'),
     path('discount-list', DiscountList.as_view(), name='discount-list'),
     path('feedback-list', FeedbackList.as_view(), name='feedback-list'),
+    path('ticket-type', TicketTypeList.as_view(), name='ticket-type'),
 
     # path('ticket-list', TicketList.as_view(), name='ticket-list'),
     # path('history-list', HistoryList.as_view(), name='history-list'),

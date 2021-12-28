@@ -5,7 +5,7 @@ from drf_writable_nested.serializers import WritableNestedModelSerializer
 from cinema.models import Room
 from cinema.serializers import ShowtimeSerializer, RoomSerializer
 from users.serializers import UserSerializer
-from .models import Booking, Showtime, Seat, Discount
+from .models import Booking, Showtime, Seat, Discount, TicketType
 
 
 class SeatSerializer(WritableNestedModelSerializer):
@@ -16,6 +16,12 @@ class SeatSerializer(WritableNestedModelSerializer):
     class Meta:
         model = Seat
         fields = ["id", "seat_number", "row", "room"]
+
+
+class TicketTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TicketType
+        fields = '__all__'
 
 
 class DiscountSerializer(serializers.ModelSerializer):
@@ -59,4 +65,3 @@ class BookingSerializer(WritableNestedModelSerializer):
 
             raise serializers.ValidationError("Seat is already reserved")
         return attrs
-

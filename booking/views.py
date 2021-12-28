@@ -4,27 +4,29 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from booking.models import *
+from booking.models import Seat, TicketType, Discount, Booking
 from booking.serializers import (
-    RoomSerializer,
     SeatSerializer,
     BookingSerializer,
-    DiscountSerializer
+    DiscountSerializer, TicketTypeSerializer
 )
-
-
-class RoomList(generics.ListCreateAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
+from users.permissions import IsAdminOrReadOnly, IsAuthenticated
 
 
 class SeatList(generics.ListCreateAPIView):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class TicketTypeList(generics.ListCreateAPIView):
+    serializer_class = TicketTypeSerializer
+    queryset = TicketType.objects.all()
 
 
 class DiscountList(generics.ListCreateAPIView):
     serializer_class = DiscountSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Discount.objects.filter(client=self.request.user)
@@ -35,6 +37,7 @@ class DiscountList(generics.ListCreateAPIView):
 
 class BookingList(APIView):
     serializer_class = BookingSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         booking = Booking.objects.filter(client=request.user)

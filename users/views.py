@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import NewUser, Feedback
-from users.serializers import UserSerializer, LoginSerializer, FeedbackSerializer
+from users.serializers import \
+    UserSerializer,\
+    LoginSerializer, \
+    FeedbackSerializer
 
 
 class RegisterView(generics.GenericAPIView):
