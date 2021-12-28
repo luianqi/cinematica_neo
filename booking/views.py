@@ -42,7 +42,7 @@ class DiscountList(generics.ListCreateAPIView):
 
 class BookingList(APIView):
     serializer_class = BookingSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         booking = Booking.objects.filter(client=request.user)
