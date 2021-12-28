@@ -24,6 +24,11 @@ class TicketTypeList(generics.ListCreateAPIView):
     queryset = TicketType.objects.all()
 
 
+class TicketTypeDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TicketTypeSerializer
+    queryset = TicketType.objects.all()
+
+
 class DiscountList(generics.ListCreateAPIView):
     serializer_class = DiscountSerializer
     permission_classes = (IsAuthenticated,)

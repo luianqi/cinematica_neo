@@ -38,6 +38,7 @@ urlpatterns = [
     path('discount-list', DiscountList.as_view(), name='discount-list'),
     path('feedback-list', FeedbackList.as_view(), name='feedback-list'),
     path('ticket-type', TicketTypeList.as_view(), name='ticket-type'),
+    path('ticket-type/<int:pk>/', TicketTypeDetail.as_view(), name='ticket-detail'),
 
     # path('ticket-list', TicketList.as_view(), name='ticket-list'),
     # path('history-list', HistoryList.as_view(), name='history-list'),

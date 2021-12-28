@@ -34,7 +34,7 @@ class DiscountSerializer(serializers.ModelSerializer):
 class BookingSerializer(WritableNestedModelSerializer):
     seat = PresentablePrimaryKeyRelatedField(
         queryset=Seat.objects.all(),
-        presentation_serializer=SeatSerializer, many=True)
+        presentation_serializer=SeatSerializer)
     client = UserSerializer(read_only=True)
     showtime = PresentablePrimaryKeyRelatedField(
         queryset=Showtime.objects.all(),
