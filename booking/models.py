@@ -12,7 +12,7 @@ class Seat(models.Model):
     )
 
     def __str__(self):
-        return self.seat_number
+        return f'{self.seat_number}'
 
 
 class Discount(models.Model):
@@ -34,7 +34,7 @@ class TicketType(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class Booking(models.Model):
@@ -84,7 +84,7 @@ class Booking(models.Model):
                 self.price = self.ticket_type.price
             else:
                 price_with_discount = (
-                    self.ticket_type.price / 100 * self.discount.discount_box
+                    self.ticket_type.price / 100 * self.discount.discount_card
                 )
                 self.price = self.ticket_type.price - price_with_discount
         super().save(*args, **kwargs)

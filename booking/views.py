@@ -71,7 +71,7 @@ class BookingList(APIView):
             )
 
             if booking:
-                discount = Discount.objects.get(client=self.request.user)
+                discount = Discount.objects.filter(client=self.request.user).first()
                 discount.discount_card = discount.discount_card + (
                     decimal.Decimal(booking.ticket_type.price / 100 * 3)
                 )
